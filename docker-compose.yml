@@ -1,0 +1,15 @@
+version: "3.2"
+services:
+  scrum-node:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      network_mode: "service:redis"
+
+  redis:
+    image: redis
+    volumes:
+      - ./redis-data:/data
+    ports:
+      - "7777:80"
+      - "6379:6379"
